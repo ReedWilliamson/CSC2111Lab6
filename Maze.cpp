@@ -53,7 +53,7 @@ Cell* Maze::processBackTrack(StackLinked<Cell>* stack)
       //remove the cell and set the maze location to BACKTRACK (the maze is a Matrix)
       stack->pop();
 	  
-	  maze->setElement(top_cell->getRow, top_cell->getCol, BACKTRACK);
+	  maze->setElement(top_cell->getRow(), top_cell->getCol(), BACKTRACK);
 	  
       //look at the next cell
       top_cell = stack->peek(); 
@@ -74,7 +74,7 @@ bool Maze::isSolved(Cell* curr_cell, StackLinked<Cell>* stack)
 
 
    //have you solved the maze? (check that we are at the bottom right maze location and that it is a SPACE
-   if (row == 21 && col == 31)  
+   if (row == height && col == width)  
    {
       //set the maze location to TRIED
       maze->setElement(row, col, TRIED);
@@ -109,7 +109,7 @@ void Maze::processSolution(StackLinked<Cell>* stack)
       
       //update the maze location to PATH
       
-	  maze->setElement(top_cell->getRow, top_cell->getCol, PATH);
+	  maze->setElement(top_cell->getRow(), top_cell->getCol(), PATH);
 
       gui->update();
    }
@@ -158,7 +158,7 @@ bool Maze::traverse()
 		 maze->setElement(row, col, TRIED);
 		 
          //put the cell on the stack (move forward through the maze)
-		 stack->push(curr_cell);
+		 stack.push(curr_cell);
 
          Sleep(75);  //slow down the maze traversal
          gui->update();
@@ -167,8 +167,8 @@ bool Maze::traverse()
       {
          //DO THIS
          //delete the cell
-         curr_cell = top_cell->getNext();
-		 stack->pop();
+         curr_cell = top_cell->nextCell();
+		 stack.pop();
 
       }
    }
