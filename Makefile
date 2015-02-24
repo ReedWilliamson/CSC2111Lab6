@@ -1,8 +1,8 @@
 AutomatedMakefile = am
 CC = g++
 
-FILES =  
-EXECUTABLE = 
+FILES = Maze.cpp 
+EXECUTABLE = Maze
 
 PROJECT_PATH = $(PROJECT_DIR)
 GTK_PATH = /$(DRIVE_LETTER)/MinGW/GTK
