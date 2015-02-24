@@ -18,7 +18,7 @@ LINK = $(CC) $(LIB_DIRS) -o
 all: Project
 
 Project: 		$(FILES)
-			$(LINK) $(EXECUTABLE) $(FILES) $(LIBS)
+			$(LINK) $(EXECUTABLE) $(INC_DIRS) $(FILES) $(LIBS)
 
 Cell.o:			Cell.h Cell.cpp
 			$(COMPILE) Cell.cpp
