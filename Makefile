@@ -1,7 +1,7 @@
 AutomatedMakefile = am
 CC = g++
 
-FILES = Maze.cpp Cell.o
+FILES = Maze.o Cell.o MazeGUI.o
 EXECUTABLE = Maze.exe
 
 PROJECT_PATH = $(PROJECT_DIR)
@@ -21,10 +21,12 @@ Project: 		$(FILES)
 			$(LINK) $(EXECUTABLE) $(INC_DIRS) $(FILES) $(LIBS)
 
 Cell.o:			Cell.h Cell.cpp
-			$(COMPILE) Cell.cpp
+				$(COMPILE) Cell.cpp
 			
-			
+MazeGUI.o:		MazeGUI.h MazeGUI.cpp
+				$(COMPILE) MazeGUI.cpp			
 
-
+Maze.o:			Maze.h Maze.cpp
+				$(COMPILE) Maze.cpp
 
 

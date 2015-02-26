@@ -69,7 +69,7 @@ T* StackLinked<T>::peek()
 {
    T* item = NULL;
    
-   if (sze == 0) return NULL;
+   if (!isEmpty())
    {
 		item = top->getItem();
    }
@@ -91,7 +91,7 @@ T* StackLinked<T>::pop()
 {
    T* item = NULL;
    
-   if (sze == 0) return NULL;
+   if (!isEmpty()) 
    {
 		NextNode<T>* curr = top;
 		item = top->getItem();

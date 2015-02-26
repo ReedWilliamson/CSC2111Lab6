@@ -56,7 +56,7 @@ Cell* Maze::processBackTrack(StackLinked<Cell>* stack)
 	  maze->setElement(top_cell->getRow(), top_cell->getCol(), BACKTRACK);
 	  
       //look at the next cell
-      top_cell = stack->peek(); 
+      top_cell = stack->peek();
 
       Sleep(75);      //slow down the maze traversal
       gui->update();  //update whenever the color of a cell has been changed
@@ -106,9 +106,7 @@ void Maze::processSolution(StackLinked<Cell>* stack)
       top_cell = stack->peek();
 	  stack->pop();
 
-      
       //update the maze location to PATH
-      
 	  maze->setElement(top_cell->getRow(), top_cell->getCol(), PATH);
 
       gui->update();
@@ -129,18 +127,15 @@ bool Maze::traverse()
    Cell* start_cell = new Cell(1, 1);
    stack.push(start_cell);  //start from the top left corner
 
-   while(!stack.isEmpty())
+   while(stack.isEmpty() != 1)
    {
       Cell* top_cell = processBackTrack(&stack);
+	  //cout << "sze = " << stack.size()<<endl;
       if (top_cell == NULL) break;  //no solution (back tracked all the way to the beginning)
 
       //call a method in the Cell class to give you a new Cell in a new direction relative to top_cell (initially, DOWN)
       //DO THIS
       Cell* curr_cell = top_cell->nextCell();
-
-
-
-
 
       //does this new Cell solve the maze?
       done = isSolved(curr_cell, &stack);
@@ -162,14 +157,6 @@ bool Maze::traverse()
 
          Sleep(75);  //slow down the maze traversal
          gui->update();
-      }
-      else //look for a different route 
-      {
-         //DO THIS
-         //delete the cell
-         curr_cell = top_cell->nextCell();
-		 stack.pop();
-
       }
    }
 
